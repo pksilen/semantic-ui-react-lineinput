@@ -1,0 +1,102 @@
+{
+  "name": "semantic-ui-react-lineinput",
+  "version": "1.0.0",
+  "description": "Line input control with validation support for Semantic UI React",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "check-types": "tsc --outDir ./lib/types",
+    "build": "babel ./src --out-dir lib --source-maps --extensions \".ts\",\".tsx\", --ignore \"src/**/*.test.*\",\"src/setupTests.js\"",
+    "build-demo": "prettier --check demo/demo.tsx && eslint demo/demo.tsx --ext .tsx && tsc --project ./demo && webpack",
+    "lint": "eslint ./src --ext .js,.ts,.tsx",
+    "prebuild": "npm run prettier && npm run lint && npm run check-types && npm run test-coverage",
+    "prepublishOnly": "npm run build",
+    "prettier": "prettier --check \"src/**/*.js\"",
+    "test": "jest ./src",
+    "test-coverage": "jest ./src --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pksilen/semantic-ui-react-lineinput.git"
+  },
+  "keywords": [
+    "React",
+    "Semantic UI",
+    "Line",
+    "Input",
+    "LineInput",
+    "Validation"
+  ],
+  "author": "Petri Silen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pksilen/semantic-ui-react-lineinput/issues"
+  },
+  "homepage": "https://github.com/pksilen/semantic-ui-react-lineinput#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/enzyme": "^3.10.3",
+    "@types/jest": "^24.0.18",
+    "@types/prop-types": "^15.7.1",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb": "^18.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "semantic-ui-react": "^0.87.3",
+    "typescript": "^3.6.2",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "browser-locale": "^1.0.3",
+    "is_js": "^0.9.0",
+    "libphonenumber-js": "^1.7.23",
+    "prop-types": "^15.7.2"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 0.2%",
+    "Firefox ESR",
+    "not dead"
+  ],
+  "prettier": {
+    "arrowParens": "always",
+    "printWidth": 110,
+    "tabWidth": 2,
+    "singleQuote": true
+  }
+}

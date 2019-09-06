@@ -1,0 +1,43 @@
+{
+  "extends": ["airbnb", "plugin:@typescript-eslint/recommended", "prettier", "prettier/@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "plugins": ["@typescript-eslint", "jest"],
+  "rules": {
+    "max-len": ["error", { "code": 120 }],
+    "comma-dangle": "off",
+    "operator-linebreak": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "object-curly-newline": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/state-in-constructor": [1, "never"],
+    "react/require-default-props": [1, { "forbidDefaultForRequired": false }],
+    "react/default-props-match-prop-types": [1, { "allowRequiredDefaults": true }],
+    "react/static-property-placement": [1, "static public field"],
+    "react/jsx-props-no-spreading": [
+      1,
+      {
+        "html": "ignore"
+      }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": ["tsx", "ts", ".js", ".jsx"] }],
+    "@typescript-eslint/no-unused-vars": [1, { "ignoreRestSiblings": true }],
+    "@typescript-eslint/explicit-function-return-type": [
+      1,
+      {
+        "allowExpressions": true
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
