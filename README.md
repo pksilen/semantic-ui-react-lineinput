@@ -72,7 +72,7 @@ Line input control with validation support for [Semantic UI React]
 | size                      | Size of control                                                                                                                |
 | type                      | HTML input type                                                                                                                |
 | validation                | Validation keyword, a regular expression or a validation function                                                              |
-|              
+
 
     
 ## Optional property types
