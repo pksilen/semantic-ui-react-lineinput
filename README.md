@@ -17,6 +17,8 @@ Line input control with validation support for [Semantic UI React]
 
 ![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example5.png)
 
+![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example6.png)
+
 ## Prerequisites
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -123,6 +125,8 @@ Line input control with validation support for [Semantic UI React]
     
 ## Styling example
    ![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/styled_example.png) 
+   
+   ![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/styled_example2.png)
     
    styles.css
    

@@ -37,6 +37,7 @@ export interface Props extends React.HTMLAttributes<HTMLDivElement> {
 type State = {
   hasValidValue: boolean;
   hasFocus: boolean;
+  hasFocused: boolean;
 };
 
 export default class LineInput extends React.Component<Props, {}> {
@@ -112,7 +113,8 @@ export default class LineInput extends React.Component<Props, {}> {
 
   state: State = {
     hasValidValue: true,
-    hasFocus: false
+    hasFocus: false,
+    hasFocused: false
   };
 
   onInputBlur = () => {
@@ -142,7 +144,8 @@ export default class LineInput extends React.Component<Props, {}> {
   onInputFocus = () => {
     this.setState({
       hasValidValue: true,
-      hasFocus: true
+      hasFocus: true,
+      hasFocused: true
     });
   };
 
@@ -185,14 +188,14 @@ export default class LineInput extends React.Component<Props, {}> {
   // noinspection OverlyComplexFunctionJS
   getIconName = (): SemanticICONS => {
     const { icon, validation, validationErrorIcon, validationSuccessIcon, value } = this.props;
-    const { hasFocus, hasValidValue } = this.state;
+    const { hasFocus, hasFocused, hasValidValue } = this.state;
 
     if (validationErrorIcon && !hasValidValue) {
-      return hasFocus ? ('' as SemanticICONS) : validationErrorIcon;
+      return hasFocus || !hasFocused ? ('' as SemanticICONS) : validationErrorIcon;
     }
 
     if (validationSuccessIcon && hasValidValue) {
-      return hasFocus ? ('' as SemanticICONS) : validationSuccessIcon;
+      return hasFocus || !hasFocused ? ('' as SemanticICONS) : validationSuccessIcon;
     }
 
     if (validation === 'creditCardNumber' && value) {
