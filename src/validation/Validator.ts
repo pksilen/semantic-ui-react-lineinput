@@ -4,6 +4,9 @@ import is from 'is_js';
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import getBrowserLocale from 'browser-locale';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import cardsy from 'cardsy';
 import { parsePhoneNumberFromString } from 'libphonenumber-js/max';
 import { ValidationType } from './ValidationType';
 
@@ -15,10 +18,19 @@ export default class Validator {
     validation: ValidationType,
     minValue?: number,
     maxValue?: number,
-    suppliedCountryCode?: string
+    suppliedCountryCode?: string,
+    minLength?: number
   ): boolean {
+    if (minLength !== undefined && valueString.length < minLength)  {
+      return false;
+    }
+
     if (typeof validation === 'function') {
       return validation(valueString);
+    }
+
+    if (Array.isArray(validation)) {
+      return validation.includes(valueString);
     }
 
     if (typeof validation === 'object') {
@@ -46,11 +58,13 @@ export default class Validator {
         return is.email(valueString);
 
       case 'creditCardNumber':
-
         return is.creditCard(valueString.replace(/\s/g, ''));
 
       case 'creditCardExpiration':
-        return !!valueString.match(/^\d{1,2}\/\d{2}$/);
+        return cardsy.validate.expiryString(valueString);
+
+      case 'creditCardVerificationCode':
+        return !!valueString.match(/^\d{3,4}$/);
 
       case 'number':
       case 'integer':

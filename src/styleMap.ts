@@ -2,7 +2,10 @@ import { CSSProperties } from 'react';
 
 
 const styleMap: { [key: string]: CSSProperties } = {
-  errorBottomDiv: {
+  topDiv: {
+    display: 'inline-flex'
+  },
+  topDivWhenErrorAtBottom: {
     flexDirection: 'column'
   },
   input: {
@@ -15,6 +18,9 @@ const styleMap: { [key: string]: CSSProperties } = {
   },
   errorInput:  {
     borderBottomColor: 'red'
+  },
+  validationIcon: {
+    opacity: 1
   },
   label: {
     background: 'none',

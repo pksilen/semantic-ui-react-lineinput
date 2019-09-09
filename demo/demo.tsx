@@ -189,6 +189,7 @@ class DemoApp extends React.Component<{}, State> {
         Mini
         <LineInput
           placeholder="Enter a value..."
+          size="mini"
           value={values[17]}
           onValueChange={(newValue: string) => this.changeValue(newValue, 17)}
         />
@@ -196,6 +197,7 @@ class DemoApp extends React.Component<{}, State> {
         Small
         <LineInput
           placeholder="Enter a value..."
+          size="small"
           value={values[18]}
           onValueChange={(newValue: string) => this.changeValue(newValue, 18)}
         />
@@ -203,6 +205,7 @@ class DemoApp extends React.Component<{}, State> {
         Large
         <LineInput
           placeholder="Enter a value..."
+          size="large"
           value={values[19]}
           onValueChange={(newValue: string) => this.changeValue(newValue, 19)}
         />
@@ -210,6 +213,7 @@ class DemoApp extends React.Component<{}, State> {
         Big
         <LineInput
           placeholder="Enter a value..."
+          size="big"
           value={values[20]}
           onValueChange={(newValue: string) => this.changeValue(newValue, 20)}
         />
@@ -217,6 +221,7 @@ class DemoApp extends React.Component<{}, State> {
         Huge
         <LineInput
           placeholder="Enter a value..."
+          size="massive"
           value={values[21]}
           onValueChange={(newValue: string) => this.changeValue(newValue, 21)}
         />

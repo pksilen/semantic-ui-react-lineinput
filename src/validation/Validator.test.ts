@@ -1,8 +1,20 @@
 import Validator from './Validator';
 
 describe('validateValue()', () => {
+  it('should validate minLength', () => {
+    const isValidValue = Validator.validateValue('123', () => true, undefined, undefined, undefined, 4);
+
+    expect(isValidValue).toBe(false);
+  });
+
   it('should validate using a validation function', () => {
     const isValidValue = Validator.validateValue('123', () => true);
+
+    expect(isValidValue).toBe(true);
+  });
+
+  it('should validate using a string array', () => {
+    const isValidValue = Validator.validateValue('XYZ', ['ABC', 'XYZ']);
 
     expect(isValidValue).toBe(true);
   });
@@ -32,7 +44,7 @@ describe('validateValue()', () => {
   });
 
   it('should validate a credit card expiration', () => {
-    const isValidValue = Validator.validateValue('01/22', 'creditCardExpiration');
+    const isValidValue = Validator.validateValue('01 / 22', 'creditCardExpiration');
 
     expect(isValidValue).toBe(true);
   });

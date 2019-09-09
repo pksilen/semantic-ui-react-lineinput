@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { mount, shallow as renderShallow } from 'enzyme';
 import LineInput from './LineInput';
+import { ValidationType } from '../validation/ValidationType';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let onValueChangeMock: any;
@@ -15,13 +16,17 @@ describe('propTypes', () => {
     // eslint-disable-next-line react/forbid-foreign-prop-types
     const { propTypes } = LineInput;
 
+    expect(propTypes.allowEmptyValue).toBe(PropTypes.bool);
     expect(propTypes.className).toBe(PropTypes.string);
     expect(propTypes.countryCode).toBe(PropTypes.string);
     expect(propTypes.disabled).toBe(PropTypes.bool);
     expect(propTypes.errorText).toBe(PropTypes.string);
     expect(propTypes.errorTextPosition).toBeTruthy();
+    expect(propTypes.icon).toBe(PropTypes.string);
+    expect(propTypes.iconPosition).toBeTruthy();
     expect(propTypes.maxLength).toBe(PropTypes.number);
     expect(propTypes.maxValue).toBe(PropTypes.number);
+    expect(propTypes.minLength).toBe(PropTypes.number);
     expect(propTypes.minValue).toBe(PropTypes.number);
     expect(propTypes.onValueChange).toBe(PropTypes.func.isRequired);
     expect(propTypes.placeholder).toBe(PropTypes.string);
@@ -36,17 +41,21 @@ describe('defaultProps', () => {
   it('should set default values for optional props', () => {
     const lineInputWrapper = mount(<LineInput onValueChange={onValueChangeMock} value="abc" />);
 
+    expect(lineInputWrapper.props().allowEmptyValue).toBe(false);
     expect(lineInputWrapper.props().className).toBe(undefined);
     expect(lineInputWrapper.props().countryCode).toBe('');
     expect(lineInputWrapper.props().disabled).toBe(false);
     expect(lineInputWrapper.props().errorText).toBe('');
     expect(lineInputWrapper.props().errorTextPosition).toBe('bottom');
+    expect(lineInputWrapper.props().icon).toBe('');
+    expect(lineInputWrapper.props().iconPosition).toBe('left');
     expect(lineInputWrapper.props().maxLength).toBe(undefined);
     expect(lineInputWrapper.props().maxValue).toBe(undefined);
+    expect(lineInputWrapper.props().minLength).toBe(undefined);
     expect(lineInputWrapper.props().minValue).toBe(undefined);
     expect(lineInputWrapper.props().placeholder).toBe('');
     expect(lineInputWrapper.props().size).toBe('small');
-    expect(lineInputWrapper.props().type).toBe('text');
+    expect(lineInputWrapper.props().type).toBe(undefined);
     expect(lineInputWrapper.props().validation).toBe(undefined);
   });
 });
@@ -65,6 +74,18 @@ describe('onInputBlur', () => {
   it('it should set hasValidValue in state to true, if validation is successful', () => {
     const lineInputWrapper = mount(
       <LineInput onValueChange={onValueChangeMock} validation="number" value="123" />
+    );
+    const inputWrapper = lineInputWrapper.find('input');
+
+    inputWrapper.simulate('focus');
+    inputWrapper.simulate('blur');
+
+    expect(lineInputWrapper.state('hasValidValue')).toBe(true);
+  });
+
+  it('it should not validate, if value is empty and allowEmptyValue is true', () => {
+    const lineInputWrapper = mount(
+      <LineInput allowEmptyValue onValueChange={onValueChangeMock} validation="number" value="" />
     );
     const inputWrapper = lineInputWrapper.find('input');
 
@@ -145,10 +166,10 @@ describe('onInputChange', () => {
     );
     const inputWrapper = lineInputWrapper.find('input');
 
-    inputWrapper.simulate('change', { target: { value: 'def'}});
+    inputWrapper.simulate('change', { target: { value: 'def' } });
 
     expect(onValueChangeMock).toHaveBeenCalledWith('def');
-  })
+  });
 
   it('should format a credit card number', () => {
     const lineInputWrapper = mount(
@@ -156,7 +177,7 @@ describe('onInputChange', () => {
     );
     const inputWrapper = lineInputWrapper.find('input');
 
-    inputWrapper.simulate('change', { target: { value: '5345123455557777'}});
+    inputWrapper.simulate('change', { target: { value: '5345123455557777' } });
 
     expect(onValueChangeMock).toHaveBeenCalledWith('5345 1234 5555 7777');
   });
@@ -167,7 +188,7 @@ describe('onInputChange', () => {
     );
     const inputWrapper = lineInputWrapper.find('input');
 
-    inputWrapper.simulate('change', { target: { value: '534'}});
+    inputWrapper.simulate('change', { target: { value: '534' } });
 
     expect(onValueChangeMock).toHaveBeenCalledWith('534');
   });
@@ -178,7 +199,7 @@ describe('onInputChange', () => {
     );
     const inputWrapper = lineInputWrapper.find('input');
 
-    inputWrapper.simulate('change', { target: { value: '534567'}});
+    inputWrapper.simulate('change', { target: { value: '534567' } });
 
     expect(onValueChangeMock).toHaveBeenCalledWith('5345 67');
   });
@@ -189,7 +210,7 @@ describe('onInputChange', () => {
     );
     const inputWrapper = lineInputWrapper.find('input');
 
-    inputWrapper.simulate('change', { target: { value: '534567771'}});
+    inputWrapper.simulate('change', { target: { value: '534567771' } });
 
     expect(onValueChangeMock).toHaveBeenCalledWith('5345 6777 1');
   });
@@ -200,9 +221,41 @@ describe('onInputChange', () => {
     );
     const inputWrapper = lineInputWrapper.find('input');
 
-    inputWrapper.simulate('change', { target: { value: '534567771111223'}});
+    inputWrapper.simulate('change', { target: { value: '534567771111223' } });
 
     expect(onValueChangeMock).toHaveBeenCalledWith('5345 6777 1111 223');
+  });
+});
+
+describe('getInputType()', () => {
+  it('should return type, if type prop is specified', () => {
+    const lineInputWrapper = renderShallow(
+      <LineInput onValueChange={onValueChangeMock} type="password" value="abc" />
+    );
+    const inputWrapper = lineInputWrapper.find('input');
+
+    expect(inputWrapper.props().type).toBe('password');
+  });
+
+  test.each([['emailAddress', 'email'], ['phoneNumber', 'tel'], ['url', 'url']])(
+    'it should return HTML input type according to specified validation type when type is not defined',
+    (validation, htmlInputType) => {
+      const lineInputWrapper = renderShallow(
+        <LineInput onValueChange={onValueChangeMock} validation={validation as ValidationType} value="abc" />
+      );
+      const inputWrapper = lineInputWrapper.find('input');
+
+      expect(inputWrapper.props().type).toBe(htmlInputType);
+    }
+  );
+
+  it('should return "text", if any other validation type is specified', () => {
+    const lineInputWrapper = renderShallow(
+      <LineInput onValueChange={onValueChangeMock} validation="usSSN" value="abc" />
+    );
+    const inputWrapper = lineInputWrapper.find('input');
+
+    expect(inputWrapper.props().type).toBe('text');
   });
 });
 

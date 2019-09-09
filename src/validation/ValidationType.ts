@@ -3,6 +3,7 @@ type PredefinedValidationType =
   | 'emailAddress'
   | 'creditCardNumber'
   | 'creditCardExpiration'
+  | 'creditCardVerificationCode'
   | 'number'
   | 'integer'
   | 'alphaNumeric'
@@ -18,4 +19,4 @@ type PredefinedValidationType =
 
 type ValidationFunction = (inputString: string) => boolean;
 
-export type ValidationType = PredefinedValidationType | RegExp | ValidationFunction;
+export type ValidationType = PredefinedValidationType | string[] | RegExp | ValidationFunction;
