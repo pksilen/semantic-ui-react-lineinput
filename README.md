@@ -8,12 +8,14 @@ Line input control with validation support for [Semantic UI React]
 [![MIT License][license-badge]][license]
 
 ![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example1.png)
-
    
 ![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example2.png)
-
     
 ![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example3.png)
+
+![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example4.png)
+
+![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example5.png)
 
 ## Prerequisites
     "react": "^16.0.0",
@@ -143,7 +145,7 @@ Line input control with validation support for [Semantic UI React]
    
    Applying CSS using className
        
-       <LineInput size="huge" placeholder="Enter credit card number..." errorText="must be a valid credit card number" errorTextPosition="bottom" validation="creditCardNumber" onValueChange={this.changeCreditCardNumber} value={creditCardNumber}/>
+       <LineInput size="huge" placeholder="Enter credit card number..." errorText="must be a valid credit card number" validation="creditCardNumber" onValueChange={this.changeCreditCardNumber} value={creditCardNumber}/>
        <LineInput className="expiration" size="huge" placeholder="MM / YY" errorText="must be a MM / YY" validation="creditCardExpiration" onValueChange={this.changeCreditCardExpiration} value={creditCardExpiration}/>
        <LineInput className="cvc" size="huge" placeholder="CVC" errorText="must be a CVC" validation="creditCardVerificationCode" onValueChange={this.changeCVCValue} value={cvc}/>
 
