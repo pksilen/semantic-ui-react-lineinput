@@ -5,6 +5,9 @@ Line input control with validation support for [Semantic UI React]
 [![version][version-badge]][package]
 [![build][build]][circleci]
 [![coverage][coverage]][codecov]
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=alert_status)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-lineinput)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=bugs)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-lineinput)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-lineinput)
 [![MIT License][license-badge]][license]
 
 ![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example1.png)

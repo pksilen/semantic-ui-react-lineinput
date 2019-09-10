@@ -70,12 +70,11 @@ exports[`render() should render component with additional HTML attributes correc
 </div>
 `;
 
-exports[`render() should render component with errorTextPosition "bottom" correctly 1`] = `
+exports[`render() should render component with errorTextPosition "right" correctly 1`] = `
 <div
   style={
     Object {
       "display": "inline-flex",
-      "flexDirection": "column",
     }
   }
 >
