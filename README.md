@@ -52,10 +52,29 @@ Line input control with validation support for [Semantic UI React]
         )};
     }
     
-   LineInput with validations
+   LineInput with predefined validations
     
     <LineInput errorText="value must be an integer" validation="integer" value={this.state.value} onValueChange={this.changeValue} />             
     <LineInput errorText="Invalid e-mail address" validation="emailAddress" value={this.state.value} onValueChange={this.changeValue} />
+    
+   LineInput with regular expression validation
+     
+     const regExp = /^\d{3,4}$/;
+     <LineInput validation={regExp} value={this.state.value} onValueChange={this.changeValue} />
+     
+   LineInput with validation function
+      
+      const isEvenNumber = (valueStr) => {
+        const value = parseInt(valueStr, 10);
+        return value % 2 === 0;
+      }
+      
+      <LineInput validation={isEvenNumber} value={this.state.value} onValueChange={this.changeValue} />
+      
+   LineInput with list of allowed values validation (case sensitive)
+       
+       const allowedValues = ['value1', 'value2', 'value3'];
+       <LineInput validation={allowedValues} value={this.state.value} onValueChange={this.changeValue} />
    
 ## Mandatory properties      
     value: string, 
@@ -112,7 +131,7 @@ Line input control with validation support for [Semantic UI React]
     errorText: '',
     errorTextPosition: 'bottom',
     icon: '',
-    iconColor: '',
+    iconColor: undefined,
     iconPosition: 'left',
     maxLength: undefined,
     maxValue: undefined,

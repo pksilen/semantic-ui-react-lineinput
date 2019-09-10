@@ -49,6 +49,12 @@ describe('validateValue()', () => {
     expect(isValidValue).toBe(true);
   });
 
+  it('should validate a credit card verification code', () => {
+    const isValidValue = Validator.validateValue('223', 'creditCardVerificationCode');
+
+    expect(isValidValue).toBe(true);
+  });
+
   it('should validate a number', () => {
     const isValidValue = Validator.validateValue('22.55', 'number');
 

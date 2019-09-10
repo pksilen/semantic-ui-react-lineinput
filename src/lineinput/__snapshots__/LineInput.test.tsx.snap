@@ -36,76 +36,8 @@ exports[`render() should render component correctly 1`] = `
 
 exports[`render() should render component with additional HTML attributes correctly 1`] = `
 <div
-  id="test1"
-  style={
-    Object {
-      "display": "inline-flex",
-      "flexDirection": "column",
-    }
-  }
->
-  <div
-    className="ui input small"
-  >
-    <input
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder=""
-      style={
-        Object {
-          "borderLeft": "none",
-          "borderRadius": 0,
-          "borderRight": "none",
-          "borderTop": "none",
-          "paddingLeft": "0.5em",
-          "paddingRight": "0.5em",
-        }
-      }
-      type="text"
-      value="abc"
-    />
-  </div>
-</div>
-`;
-
-exports[`render() should render component with additional class names correctly 1`] = `
-<div
   className="test"
-  style={
-    Object {
-      "display": "inline-flex",
-      "flexDirection": "column",
-    }
-  }
->
-  <div
-    className="ui input small"
-  >
-    <input
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      placeholder=""
-      style={
-        Object {
-          "borderLeft": "none",
-          "borderRadius": 0,
-          "borderRight": "none",
-          "borderTop": "none",
-          "paddingLeft": "0.5em",
-          "paddingRight": "0.5em",
-        }
-      }
-      type="text"
-      value="abc"
-    />
-  </div>
-</div>
-`;
-
-exports[`render() should render component with additional styles correctly 1`] = `
-<div
+  id="test1"
   style={
     Object {
       "display": "inline-flex",
@@ -167,6 +99,134 @@ exports[`render() should render disabled component correctly 1`] = `
       }
       type="text"
       value="abc"
+    />
+  </div>
+</div>
+`;
+
+exports[`render() should render icon correctly depending on iconPosition and iconColor 1`] = `
+<div
+  style={
+    Object {
+      "display": "inline-flex",
+      "flexDirection": "column",
+    }
+  }
+>
+  <div
+    className="ui input small right icon"
+  >
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder=""
+      style={
+        Object {
+          "borderLeft": "none",
+          "borderRadius": 0,
+          "borderRight": "none",
+          "borderTop": "none",
+          "paddingLeft": "0.5em",
+          "paddingRight": "0.5em",
+        }
+      }
+      type="text"
+      value="abc"
+    />
+    <Icon
+      as="i"
+      color="blue"
+      name="search"
+      style={Object {}}
+    />
+  </div>
+</div>
+`;
+
+exports[`render() should render validationErrorIcon correctly on right side 1`] = `
+<div
+  style={
+    Object {
+      "display": "inline-flex",
+      "flexDirection": "column",
+    }
+  }
+>
+  <div
+    className="ui input small right icon"
+  >
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder=""
+      style={
+        Object {
+          "borderLeft": "none",
+          "borderRadius": 0,
+          "borderRight": "none",
+          "borderTop": "none",
+          "paddingLeft": "0.5em",
+          "paddingRight": "0.5em",
+        }
+      }
+      type="text"
+      value="abc"
+    />
+    <Icon
+      as="i"
+      color="green"
+      name=""
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`render() should render validationSuccessIcon correctly on right side 1`] = `
+<div
+  style={
+    Object {
+      "display": "inline-flex",
+      "flexDirection": "column",
+    }
+  }
+>
+  <div
+    className="ui input small right icon"
+  >
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder=""
+      style={
+        Object {
+          "borderLeft": "none",
+          "borderRadius": 0,
+          "borderRight": "none",
+          "borderTop": "none",
+          "paddingLeft": "0.5em",
+          "paddingRight": "0.5em",
+        }
+      }
+      type="text"
+      value="abc"
+    />
+    <Icon
+      as="i"
+      color="green"
+      name=""
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
     />
   </div>
 </div>
