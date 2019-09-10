@@ -32,7 +32,7 @@ class DemoApp extends React.Component<{}, State> {
     return (
       <div style={{ marginLeft: '5px' }}>
         <h1>Demo</h1>
-        <h2>TimeInput</h2>
+        <h2>LineInput</h2>
         LineInput without validation
         <LineInput
           placeholder="Enter value..."
@@ -250,7 +250,7 @@ class DemoApp extends React.Component<{}, State> {
         Huge
         <LineInput
           placeholder="Enter a value..."
-          size="massive"
+          size="huge"
           value={values[24]}
           onValueChange={(newValue: string) => this.changeValue(newValue, 24)}
         />
@@ -258,6 +258,7 @@ class DemoApp extends React.Component<{}, State> {
         Massive
         <LineInput
           placeholder="Enter a value..."
+          size="massive"
           value={values[25]}
           onValueChange={(newValue: string) => this.changeValue(newValue, 25)}
         />

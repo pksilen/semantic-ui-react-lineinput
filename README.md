@@ -81,27 +81,27 @@ Line input control with validation support for [Semantic UI React]
     onValueChange: (newValue: string) => void,
          
 ## Optional properties
-| property                  | description                                                                                                                    |
-| --------------------------| -------------------------------------------------------------------------------------------------------------------------------|
-| allowEmptyValue           | Specifies if empty value for input is allowed                                                                                  |
-| className                 | class names for outer div                                                                                                      |
-| countryCode               | Default country code ISO 3166-1 Alpha-2 code for phone number validation, if not supplied, browser's country code is used      |
-| disabled                  | Specified if input is enabled or disabled                                                                                      |
-| errorText                 | Text shown if validation fails                                                                                                 |
-| errorTextPosition         | Position where error text is shown                                                                                             |
-| icon                      | Name of Semantic UI icon to be shown in input                                                                                  |
-| iconColor                 | Color for icon (red, orange, yellow, olive, green, teal, blue, violet, purple, pink, brown, grey, black                        |
-| iconPosition              | Position where the icon is shown                                                                                               |
-| maxLength                 | Maximum number of characters allowed for input control value                                                                   |
-| maxValue                  | Maximum allowed value when validation is 'number' or 'integer'                                                                 |
-| minLength                 | Minimum number of characters needed for input control value                                                                    |
-| minValue                  | Minimum allowed value when validation is 'number' or 'interger'                                                                | 
-| placeholder               | Placeholder value for input control                                                                                            |
-| size                      | Size of control                                                                                                                |
-| type                      | HTML input type, if undefined, sets type automatically according to validation or otherwise 'text'                             |
-| validation                | Validation keyword, a regular expression or a validation function                                                              |
-| validationErrorIcon       | Semantic UI icon name to be shown if validation fails, overrides icon set by icon prop                                         |
-| validationSuccessIcon     | Semantic UI icon name to be shown if validation succeeds, overrides icon set by icon prop                                      |
+| property                  | description                                                                                                                                                        |
+| --------------------------| -------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| allowEmptyValue           | Specifies if empty value for input is allowed                                                                                                                      |
+| className                 | class names for outer div                                                                                                                                          |
+| countryCode               | Default country code ISO 3166-1 Alpha-2 code for phone number validation, if not supplied, browser's country code is used                                          |
+| disabled                  | Specified if input is enabled or disabled                                                                                                                          |
+| errorText                 | Text shown if validation fails                                                                                                                                     |
+| errorTextPosition         | Position where error text is shown                                                                                                                                 |
+| icon                      | Name of Semantic UI icon to be shown in input, is overridden by validationErrorIcon or validationSuccessIcon, has no effect for validation type 'creditCardNumber  |
+| iconColor                 | Color for icon (red, orange, yellow, olive, green, teal, blue, violet, purple, pink, brown, grey, black                                                            |
+| iconPosition              | Position where the icon is shown                                                                                                                                   |
+| maxLength                 | Maximum number of characters allowed for input control value                                                                                                       |
+| maxValue                  | Maximum allowed value when validation is 'number' or 'integer'                                                                                                     |
+| minLength                 | Minimum number of characters needed for input control value                                                                                                        |
+| minValue                  | Minimum allowed value when validation is 'number' or 'interger'                                                                                                    | 
+| placeholder               | Placeholder value for input control                                                                                                                                |
+| size                      | Size of control                                                                                                                                                    |
+| type                      | HTML input type, if undefined, sets type automatically according to validation or otherwise 'text'                                                                 |
+| validation                | Validation keyword, a regular expression or a validation function                                                                                                  |
+| validationErrorIcon       | Semantic UI icon name to be shown if validation fails, overrides icon set by icon prop, has no effect for validation type 'creditCardNumber'                       |
+| validationSuccessIcon     | Semantic UI icon name to be shown if validation succeeds, overrides icon set by icon prop, has no effect for validation type 'creditCardNumber'                    |
 
     
 ## Optional property types
