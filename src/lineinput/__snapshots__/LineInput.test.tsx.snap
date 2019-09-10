@@ -70,6 +70,40 @@ exports[`render() should render component with additional HTML attributes correc
 </div>
 `;
 
+exports[`render() should render component with errorTextPosition "bottom" correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "inline-flex",
+      "flexDirection": "column",
+    }
+  }
+>
+  <div
+    className="ui input small"
+  >
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder=""
+      style={
+        Object {
+          "borderLeft": "none",
+          "borderRadius": 0,
+          "borderRight": "none",
+          "borderTop": "none",
+          "paddingLeft": "0.5em",
+          "paddingRight": "0.5em",
+        }
+      }
+      type="text"
+      value="abc"
+    />
+  </div>
+</div>
+`;
+
 exports[`render() should render disabled component correctly 1`] = `
 <div
   style={

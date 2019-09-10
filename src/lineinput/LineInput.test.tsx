@@ -406,6 +406,14 @@ describe('render()', () => {
     expect(lineInputWrapper).toMatchSnapshot();
   });
 
+  it('should render component with errorTextPosition "bottom" correctly', () => {
+    const lineInputWrapper = renderShallow(
+      <LineInput errorTextPosition="bottom" onValueChange={onValueChangeMock} value="abc" />
+    );
+
+    expect(lineInputWrapper).toMatchSnapshot();
+  });
+
   it('should render validationErrorIcon correctly on right side', () => {
     const lineInputWrapper = renderShallow(
       <LineInput onValueChange={onValueChangeMock} validationErrorIcon="exclamation" value="abc" />
