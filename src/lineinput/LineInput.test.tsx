@@ -406,9 +406,9 @@ describe('render()', () => {
     expect(lineInputWrapper).toMatchSnapshot();
   });
 
-  it('should render component with errorTextPosition "bottom" correctly', () => {
+  it('should render component with errorTextPosition "right" correctly', () => {
     const lineInputWrapper = renderShallow(
-      <LineInput errorTextPosition="bottom" onValueChange={onValueChangeMock} value="abc" />
+      <LineInput errorTextPosition="right" onValueChange={onValueChangeMock} value="abc" />
     );
 
     expect(lineInputWrapper).toMatchSnapshot();
