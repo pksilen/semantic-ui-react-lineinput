@@ -5,9 +5,9 @@ Line input control with validation support for [Semantic UI React]
 [![version][version-badge]][package]
 [![build][build]][circleci]
 [![coverage][coverage]][codecov]
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=alert_status)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-lineinput)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=bugs)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-lineinput)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-lineinput)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=alert_status)][sonarcloud]
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=bugs)][sonarcloud]
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pksilen_semantic-ui-react-lineinput&metric=vulnerabilities)][sonarcloud]
 [![MIT License][license-badge]][license]
 
 ![Example image of LineInput](https://raw.githubusercontent.com/pksilen/semantic-ui-react-lineinput/master/example/example1.png)
@@ -186,6 +186,7 @@ MIT License
 [circleci]: https://circleci.com/gh/pksilen/semantic-ui-react-lineinput/tree/master
 [coverage]: https://img.shields.io/codecov/c/github/pksilen/semantic-ui-react-lineinput/master.svg?style=flat-square
 [codecov]: https://codecov.io/gh/pksilen/semantic-ui-react-lineinput
+[sonarcloud]: https://sonarcloud.io/dashboard?id=pksilen_semantic-ui-react-lineinput
 [demo]: https://pksilen.github.io/semantic-ui-react-lineinput/
 [Semantic UI React]: https://react.semantic-ui.com/
 
