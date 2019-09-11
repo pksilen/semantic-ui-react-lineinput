@@ -174,7 +174,10 @@ export default class LineInput extends React.Component<Props, {}> {
     if (validation === 'creditCardNumber') {
       onValueChange(cardsy.format.number(value));
     } else if (validation === 'creditCardExpiration') {
-      onValueChange(cardsy.format.expiryString(value));
+      const expiryRegExp = /^(\d{2})\/(\d{2})$/;
+      const expiryMatches = value.match(expiryRegExp);
+      const expiryStr = expiryMatches ? `${expiryMatches[1]} / ${expiryMatches[2]}` : value;
+      onValueChange(cardsy.format.expiryString(expiryStr));
     } else if (validation === 'creditCardVerificationCode') {
       onValueChange(cardsy.format.cvc(value));
     } else {
