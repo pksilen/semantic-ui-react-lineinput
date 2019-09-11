@@ -183,103 +183,29 @@ describe('onInputFocus', () => {
 });
 
 describe('onInputChange', () => {
-  it('should call onValueChange', () => {
+  test.each([
+    ['def', 'def', 'number'],
+    ['5345123455557777', '5345 1234 5555 7777', 'creditCardNumber'],
+    ['543', '543', 'creditCardNumber'],
+    ['534567', '5345 67', 'creditCardNumber'],
+    ['534567771', '5345 6777 1', 'creditCardNumber'],
+    ['534567771111223', '5345 6777 1111 223', 'creditCardNumber'],
+    ['11', '11 / ', 'creditCardExpiration'],
+    ['11/21', '11 / 21', 'creditCardExpiration'],
+    ['34k', '34', 'creditCardVerificationCode']
+  ])('it should call onValueChange', (value, expectedValue, validation) => {
     const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="number" value="abc" />
+      <LineInput
+        onValueChange={onValueChangeMock}
+        validation={validation as ValidationType}
+        value=""
+      />
     );
     const inputWrapper = lineInputWrapper.find('input');
 
-    inputWrapper.simulate('change', { target: { value: 'def' } });
+    inputWrapper.simulate('change', { target: { value } });
 
-    expect(onValueChangeMock).toHaveBeenCalledWith('def');
-  });
-
-  it('should format a credit card number', () => {
-    const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="creditCardNumber" value="" />
-    );
-    const inputWrapper = lineInputWrapper.find('input');
-
-    inputWrapper.simulate('change', { target: { value: '5345123455557777' } });
-
-    expect(onValueChangeMock).toHaveBeenCalledWith('5345 1234 5555 7777');
-  });
-
-  it('should format a partial credit card number when only first group of digits', () => {
-    const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="creditCardNumber" value="" />
-    );
-    const inputWrapper = lineInputWrapper.find('input');
-
-    inputWrapper.simulate('change', { target: { value: '534' } });
-
-    expect(onValueChangeMock).toHaveBeenCalledWith('534');
-  });
-
-  it('should format a partial credit card number when second group of digits', () => {
-    const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="creditCardNumber" value="" />
-    );
-    const inputWrapper = lineInputWrapper.find('input');
-
-    inputWrapper.simulate('change', { target: { value: '534567' } });
-
-    expect(onValueChangeMock).toHaveBeenCalledWith('5345 67');
-  });
-
-  it('should format a partial credit card number when third group of digits', () => {
-    const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="creditCardNumber" value="" />
-    );
-    const inputWrapper = lineInputWrapper.find('input');
-
-    inputWrapper.simulate('change', { target: { value: '534567771' } });
-
-    expect(onValueChangeMock).toHaveBeenCalledWith('5345 6777 1');
-  });
-
-  it('should format a partial credit card number when fourth group of digits', () => {
-    const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="creditCardNumber" value="" />
-    );
-    const inputWrapper = lineInputWrapper.find('input');
-
-    inputWrapper.simulate('change', { target: { value: '534567771111223' } });
-
-    expect(onValueChangeMock).toHaveBeenCalledWith('5345 6777 1111 223');
-  });
-
-  it('should format a partial credit card expiry', () => {
-    const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="creditCardExpiration" value="" />
-    );
-    const inputWrapper = lineInputWrapper.find('input');
-
-    inputWrapper.simulate('change', { target: { value: '11' } });
-
-    expect(onValueChangeMock).toHaveBeenCalledWith('11 / ');
-  });
-
-  it('should format a full credit card expiry', () => {
-    const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="creditCardExpiration" value="" />
-    );
-    const inputWrapper = lineInputWrapper.find('input');
-
-    inputWrapper.simulate('change', { target: { value: '11/21' } });
-
-    expect(onValueChangeMock).toHaveBeenCalledWith('11 / 21');
-  });
-
-  it('should format a credit card verification code', () => {
-    const lineInputWrapper = mount(
-      <LineInput onValueChange={onValueChangeMock} validation="creditCardVerificationCode" value="" />
-    );
-    const inputWrapper = lineInputWrapper.find('input');
-
-    inputWrapper.simulate('change', { target: { value: '34k' } });
-
-    expect(onValueChangeMock).toHaveBeenCalledWith('34');
+    expect(onValueChangeMock).toHaveBeenCalledWith(expectedValue);
   });
 });
 
@@ -447,7 +373,7 @@ describe('render()', () => {
 
   it('should render validationSuccessIcon correctly on right side', () => {
     const lineInputWrapper = renderShallow(
-      <LineInput onValueChange={onValueChangeMock} validationErrorIcon="exclamation" value="abc" />
+      <LineInput onValueChange={onValueChangeMock} validationSuccessIcon="check" value="abc" />
     );
 
     expect(lineInputWrapper).toMatchSnapshot();
