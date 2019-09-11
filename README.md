@@ -89,6 +89,7 @@ LineInput with list of allowed values validation (case sensitive)
 | allowEmptyValue           | Specifies if empty value for input is allowed                                                                                                                      |
 | className                 | class names for outer div                                                                                                                                          |
 | countryCode               | Default country code ISO 3166-1 Alpha-2 code for phone number validation, if not supplied, browser's country code is used                                          |
+| creditCardNumber          | Credit card number for CVC validation                                                                                                                              |
 | disabled                  | Specified if input is enabled or disabled                                                                                                                          |
 | errorText                 | Text shown if validation fails                                                                                                                                     |
 | errorTextPosition         | Position where error text is shown                                                                                                                                 |
@@ -112,6 +113,7 @@ LineInput with list of allowed values validation (case sensitive)
     allowEmptyValue: boolean,
     className: string,  
     countryCode: string,
+    creditCardNumber: string,
     disabled: boolean,
     errorText: string,
     errorTextPosition: 'bottom' | 'right',
@@ -132,6 +134,7 @@ LineInput with list of allowed values validation (case sensitive)
     allowEmptyValue: false,
     className: undefined,
     countryCode: '',
+    creditCardNumber: '',
     disabled: false,
     errorText: '',
     errorTextPosition: 'bottom',
