@@ -1,4 +1,4 @@
-type PredefinedValidationType =
+export type PredefinedValidationType =
   | 'url'
   | 'emailAddress'
   | 'creditCardNumber'

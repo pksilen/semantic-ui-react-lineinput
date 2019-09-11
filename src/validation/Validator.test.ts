@@ -38,7 +38,7 @@ describe('validateValue()', () => {
   });
 
   it('should validate a credit card number', () => {
-    const isValidValue = Validator.validateValue('5430341533331111', 'creditCardNumber');
+    const isValidValue = Validator.validateValue('5252 4158 2380 3345', 'creditCardNumber');
 
     expect(isValidValue).toBe(true);
   });

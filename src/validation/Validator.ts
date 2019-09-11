@@ -8,20 +8,19 @@ import getBrowserLocale from 'browser-locale';
 // @ts-ignore
 import cardsy from 'cardsy';
 import { parsePhoneNumberFromString } from 'libphonenumber-js/max';
-import { ValidationType } from './ValidationType';
+import {PredefinedValidationType, ValidationType} from './ValidationType';
 
 export default class Validator {
-  // noinspection FunctionWithMoreThanThreeNegationsJS,OverlyComplexFunctionJS
-  // eslint-disable-next-line consistent-return
   static validateValue(
     valueString: string,
     validation: ValidationType,
     minValue?: number,
     maxValue?: number,
     suppliedCountryCode?: string,
-    minLength?: number
+    minLength?: number,
+    creditCardNumber?: string
   ): boolean {
-    if (minLength !== undefined && valueString.length < minLength)  {
+    if (minLength !== undefined && valueString.length < minLength) {
       return false;
     }
 
@@ -37,7 +36,27 @@ export default class Validator {
       return !!valueString.match(validation);
     }
 
+    return Validator.validateValueWithPredefinedValidation(
+      valueString,
+      validation,
+      minValue,
+      maxValue,
+      suppliedCountryCode,
+      creditCardNumber
+    );
+  }
+
+  // eslint-disable-next-line consistent-return
+  private static validateValueWithPredefinedValidation(
+    valueString: string,
+    validation: PredefinedValidationType,
+    minValue?: number,
+    maxValue?: number,
+    suppliedCountryCode?: string,
+    creditCardNumber?: string
+  ): boolean {
     let valueAsNumber = 0;
+
     if (validation === 'number') {
       valueAsNumber = parseFloat(valueString);
     } else if (validation === 'integer') {
@@ -58,13 +77,15 @@ export default class Validator {
         return is.email(valueString);
 
       case 'creditCardNumber':
-        return is.creditCard(valueString.replace(/\s/g, ''));
+        return cardsy.validate.number(valueString.replace(/\s/g, ''));
 
       case 'creditCardExpiration':
         return cardsy.validate.expiryString(valueString);
 
       case 'creditCardVerificationCode':
-        return !!valueString.match(/^\d{3,4}$/);
+        return creditCardNumber
+          ? cardsy.validate.cvc(valueString, cardsy.getType(creditCardNumber.replace(/\s/g, '')))
+          : valueString.match(/^\d{3,4}$/) !== null;
 
       case 'number':
       case 'integer':
@@ -87,7 +108,7 @@ export default class Validator {
         return is.ukPostCode(valueString);
 
       case 'phoneNumber':
-        return !!parsePhoneNumberFromString(valueString, countryCode);
+        return parsePhoneNumberFromString(valueString, countryCode) !== undefined;
 
       case 'usSSN':
         return is.socialSecurityNumber(valueString);

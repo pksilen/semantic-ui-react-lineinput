@@ -20,9 +20,11 @@ describe('propTypes', () => {
     expect(propTypes.allowEmptyValue).toBe(PropTypes.bool);
     expect(propTypes.className).toBe(PropTypes.string);
     expect(propTypes.countryCode).toBe(PropTypes.string);
+    expect(propTypes.creditCardNumber).toBe(PropTypes.string);
     expect(propTypes.disabled).toBe(PropTypes.bool);
     expect(propTypes.errorText).toBe(PropTypes.string);
     expect(propTypes.errorTextPosition).toBeTruthy();
+    expect(propTypes.focus).toBe(PropTypes.bool);
     expect(propTypes.icon).toBe(PropTypes.string);
     expect(propTypes.iconColor).toBe(PropTypes.string);
     expect(propTypes.iconPosition).toBeTruthy();
@@ -48,9 +50,11 @@ describe('defaultProps', () => {
     expect(lineInputWrapper.props().allowEmptyValue).toBe(false);
     expect(lineInputWrapper.props().className).toBe(undefined);
     expect(lineInputWrapper.props().countryCode).toBe('');
+    expect(lineInputWrapper.props().creditCardNumber).toBe('');
     expect(lineInputWrapper.props().disabled).toBe(false);
     expect(lineInputWrapper.props().errorText).toBe('');
     expect(lineInputWrapper.props().errorTextPosition).toBe('bottom');
+    expect(lineInputWrapper.props().focus).toBe(false);
     expect(lineInputWrapper.props().icon).toBe('');
     expect(lineInputWrapper.props().iconColor).toBe(undefined);
     expect(lineInputWrapper.props().iconPosition).toBe('left');
@@ -401,6 +405,14 @@ describe('render()', () => {
   it('should render disabled component correctly', () => {
     const lineInputWrapper = renderShallow(
       <LineInput disabled onValueChange={onValueChangeMock} value="abc" />
+    );
+
+    expect(lineInputWrapper).toMatchSnapshot();
+  });
+
+  it('should render focused component correctly', () => {
+    const lineInputWrapper = renderShallow(
+      <LineInput focus onValueChange={onValueChangeMock} value="abc" />
     );
 
     expect(lineInputWrapper).toMatchSnapshot();

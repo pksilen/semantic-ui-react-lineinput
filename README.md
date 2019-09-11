@@ -92,6 +92,7 @@ LineInput with list of allowed values validation (case sensitive)
 | disabled                  | Specified if input is enabled or disabled                                                                                                                          |
 | errorText                 | Text shown if validation fails                                                                                                                                     |
 | errorTextPosition         | Position where error text is shown                                                                                                                                 |
+| focus                     | Input has initial focus style                                                                                                                                      |
 | icon                      | Name of Semantic UI icon to be shown in input, is overridden by validationErrorIcon or validationSuccessIcon, has no effect for validation type 'creditCardNumber  |
 | iconColor                 | Color for icon (red, orange, yellow, olive, green, teal, blue, violet, purple, pink, brown, grey, black                                                            |
 | iconPosition              | Position where the icon is shown                                                                                                                                   |
@@ -114,6 +115,7 @@ LineInput with list of allowed values validation (case sensitive)
     disabled: boolean,
     errorText: string,
     errorTextPosition: 'bottom' | 'right',
+    focus: boolean,
     icon: string,
     iconColor: string,
     iconPosition: 'left' | 'right',
@@ -133,6 +135,7 @@ LineInput with list of allowed values validation (case sensitive)
     disabled: false,
     errorText: '',
     errorTextPosition: 'bottom',
+    focus: false,
     icon: '',
     iconColor: undefined,
     iconPosition: 'left',

@@ -14,9 +14,11 @@ export interface Props extends React.HTMLAttributes<HTMLDivElement> {
   allowEmptyValue: boolean;
   className?: string;
   countryCode: string;
+  creditCardNumber: string;
   disabled: boolean;
   errorText: string;
   errorTextPosition: 'bottom' | 'right';
+  focus: boolean;
   icon: SemanticICONS;
   iconColor: SemanticCOLORS;
   iconPosition: 'left' | 'right';
@@ -46,12 +48,14 @@ export default class LineInput extends React.Component<Props, {}> {
     allowEmptyValue: PropTypes.bool,
     className: PropTypes.string,
     countryCode: PropTypes.string,
+    creditCardNumber: PropTypes.string,
     disabled: PropTypes.bool,
     icon: PropTypes.string,
     iconColor: PropTypes.string,
     iconPosition: PropTypes.oneOf(['left', 'right']),
     errorText: PropTypes.string,
     errorTextPosition: PropTypes.oneOf(['bottom', 'right']),
+    focus: PropTypes.bool,
     maxLength: PropTypes.number,
     maxValue: PropTypes.number,
     minLength: PropTypes.number,
@@ -93,9 +97,11 @@ export default class LineInput extends React.Component<Props, {}> {
     allowEmptyValue: false,
     className: undefined,
     countryCode: '',
+    creditCardNumber: '',
     disabled: false,
     errorText: '',
     errorTextPosition: 'bottom',
+    focus: false,
     icon: '',
     iconColor: undefined,
     iconPosition: 'left',
@@ -118,7 +124,20 @@ export default class LineInput extends React.Component<Props, {}> {
   };
 
   onInputBlur = () => {
-    const { allowEmptyValue, countryCode, maxValue, minLength, minValue, validation, value } = this.props;
+    const {
+      allowEmptyValue,
+      countryCode,
+      creditCardNumber,
+      maxValue,
+      minLength,
+      minValue,
+      validation,
+      value
+    } = this.props;
+
+    this.setState({
+      hasFocus: false
+    });
 
     if (allowEmptyValue && !value) {
       return;
@@ -131,12 +150,12 @@ export default class LineInput extends React.Component<Props, {}> {
         minValue,
         maxValue,
         countryCode,
-        minLength
+        minLength,
+        creditCardNumber
       );
 
       this.setState({
-        hasValidValue,
-        hasFocus: false
+        hasValidValue
       });
     }
   };
@@ -246,13 +265,46 @@ export default class LineInput extends React.Component<Props, {}> {
     return iconColor;
   };
 
+  hasIcon = () => {
+    const { icon, validation, validationErrorIcon, validationSuccessIcon, value } = this.props;
+
+    const hasValidationIcon = validationErrorIcon || validationSuccessIcon;
+    const hasCreditCardIcon = validation === 'creditCardNumber' && value;
+
+    return icon || hasValidationIcon || hasCreditCardIcon;
+  };
+
+  getClassName = () => {
+    const { disabled, focus, iconPosition, size, validationErrorIcon, validationSuccessIcon } = this.props;
+
+    let className = `ui input ${size}`;
+
+    if (this.hasIcon()) {
+      className = `${className} ${
+        validationErrorIcon || validationSuccessIcon ? 'right' : iconPosition
+      } icon`;
+    }
+
+    if (disabled) {
+      className = `${className} disabled`;
+    }
+
+    if (focus) {
+      className = `${className} focus`;
+    }
+
+    return className;
+  };
+
   render(): React.ReactElement {
     const {
       allowEmptyValue,
       countryCode,
+      creditCardNumber,
       disabled,
       errorText,
       errorTextPosition,
+      focus,
       icon,
       iconColor,
       iconPosition,
@@ -273,19 +325,6 @@ export default class LineInput extends React.Component<Props, {}> {
     } = this.props;
 
     const { hasValidValue } = this.state;
-    let combinedClassName = `ui input ${size}`;
-
-    const hasValidationIcon = validationErrorIcon || validationSuccessIcon;
-    const hasCreditCardIcon = validation === 'creditCardNumber' && value;
-    const hasIcon = icon || hasValidationIcon || hasCreditCardIcon;
-
-    if (hasIcon) {
-      combinedClassName = `${combinedClassName} ${hasValidationIcon ? 'right' : iconPosition} icon`;
-    }
-
-    if (disabled) {
-      combinedClassName = `${combinedClassName} disabled`;
-    }
 
     const topDivStyle =
       errorTextPosition === 'bottom'
@@ -295,12 +334,12 @@ export default class LineInput extends React.Component<Props, {}> {
     const inputStyle = hasValidValue ? styleMap.input : { ...styleMap.input, ...styleMap.errorInput };
     const labelStyle =
       errorTextPosition === 'bottom' ? styleMap.label : { ...styleMap.label, ...styleMap.rightLabel };
-    const iconStyle = hasValidationIcon ? styleMap.validationIcon : {};
+    const iconStyle = validationErrorIcon || validationSuccessIcon ? styleMap.validationIcon : {};
 
     // eslint-disable-next-line react/jsx-props-no-spreading
     return (
       <div style={topDivStyle} {...restOfProps}>
-        <div className={combinedClassName}>
+        <div className={this.getClassName()}>
           <input
             maxLength={maxLength}
             type={this.getInputType()}
@@ -311,7 +350,7 @@ export default class LineInput extends React.Component<Props, {}> {
             style={inputStyle}
             value={value}
           />
-          {hasIcon ? (
+          {this.hasIcon() ? (
             <Icon color={this.getIconColor()} name={this.getIconName()} style={iconStyle} />
           ) : (
             undefined
