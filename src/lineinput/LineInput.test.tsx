@@ -260,6 +260,17 @@ describe('onInputChange', () => {
     expect(onValueChangeMock).toHaveBeenCalledWith('11 / ');
   });
 
+  it('should format a full credit card expiry', () => {
+    const lineInputWrapper = mount(
+      <LineInput onValueChange={onValueChangeMock} validation="creditCardExpiration" value="" />
+    );
+    const inputWrapper = lineInputWrapper.find('input');
+
+    inputWrapper.simulate('change', { target: { value: '11/21' } });
+
+    expect(onValueChangeMock).toHaveBeenCalledWith('11 / 21');
+  });
+
   it('should format a credit card verification code', () => {
     const lineInputWrapper = mount(
       <LineInput onValueChange={onValueChangeMock} validation="creditCardVerificationCode" value="" />

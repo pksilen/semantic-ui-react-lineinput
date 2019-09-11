@@ -69,7 +69,7 @@ class DemoApp extends React.Component<{}, State> {
         <br />
         LineInput with credit card expiration validation
         <LineInput
-          placeholder="Enter credit card expiration..."
+          placeholder="MM / YY"
           errorText="Must be a valid credit card expiration"
           validation="creditCardExpiration"
           value={values[4]}
