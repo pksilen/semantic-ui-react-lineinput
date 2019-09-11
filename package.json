@@ -1,6 +1,6 @@
 {
   "name": "semantic-ui-react-lineinput",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Line input control with validation support for Semantic UI React",
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
