@@ -49,8 +49,22 @@ describe('validateValue()', () => {
     expect(isValidValue).toBe(true);
   });
 
-  it('should validate a credit card verification code', () => {
+  it('should validate a credit card verification code without credit card number', () => {
     const isValidValue = Validator.validateValue('223', 'creditCardVerificationCode');
+
+    expect(isValidValue).toBe(true);
+  });
+
+  it('should validate a credit card verification code with credit card number', () => {
+    const isValidValue = Validator.validateValue(
+      '223',
+      'creditCardVerificationCode',
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      '5252 4158 2380 3345'
+    );
 
     expect(isValidValue).toBe(true);
   });
