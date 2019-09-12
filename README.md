@@ -181,6 +181,28 @@ LineInput with list of allowed values validation (case sensitive)
        <LineInput className="expiration" size="huge" placeholder="MM / YY" errorText="must be a MM / YY" validation="creditCardExpiration" onValueChange={this.changeCreditCardExpiration} value={creditCardExpiration}/>
        <LineInput className="cvc" size="huge" placeholder="CVC" errorText="must be a CVC" validation="creditCardVerificationCode" onValueChange={this.changeCVCValue} value={cvc}/>
 
+## Credit card validations
+Supported cards
+* American Express
+* Dankort
+* Diners Club
+* Discover
+* JCB
+* Laser
+* Maestro
+* MasterCard
+* UnionPay
+* Visa
+* Visa Electron
+
+Credit card number must pass Luhn check
+
+Credit card expiration is supported in format 'MM / YY'
+
+Credit card verification code (CVC) can validated with two options
+* Without credit card number: it must be 3-4 digits
+* With credit card number: it must be 3-4 digits depending on the supplied credit card type
+
 ## License
 MIT License
 
