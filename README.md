@@ -35,7 +35,7 @@ Line input control with validation support for [Semantic UI React]
    
 ## Example usage
     import React from 'react';
-    import { LineInput } from 'semantic-ui-react-lineinput';
+    import LineInput from 'semantic-ui-react-lineinput';
     
     class LineInputExample extends React.Component {
 
@@ -78,6 +78,8 @@ LineInput with list of allowed values validation (case sensitive)
        
     const allowedValues = ['value1', 'value2', 'value3'];
     <LineInput validation={allowedValues} value={this.state.value} onValueChange={this.changeValue} />
+    
+More examples can be found in demo/demo.tsx file.
    
 ## Mandatory properties      
     value: string, 
