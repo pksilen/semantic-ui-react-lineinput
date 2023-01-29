@@ -3,7 +3,7 @@
 exports[`render() should render component correctly 1`] = `
 <div
   style={
-    Object {
+    {
       "display": "inline-flex",
       "flexDirection": "column",
     }
@@ -18,7 +18,7 @@ exports[`render() should render component correctly 1`] = `
       onFocus={[Function]}
       placeholder=""
       style={
-        Object {
+        {
           "borderLeft": "none",
           "borderRadius": 0,
           "borderRight": "none",
@@ -39,7 +39,7 @@ exports[`render() should render component with additional HTML attributes correc
   className="test"
   id="test1"
   style={
-    Object {
+    {
       "display": "inline-flex",
       "flexDirection": "column",
     }
@@ -54,7 +54,7 @@ exports[`render() should render component with additional HTML attributes correc
       onFocus={[Function]}
       placeholder=""
       style={
-        Object {
+        {
           "borderLeft": "none",
           "borderRadius": 0,
           "borderRight": "none",
@@ -73,7 +73,7 @@ exports[`render() should render component with additional HTML attributes correc
 exports[`render() should render component with errorTextPosition "right" correctly 1`] = `
 <div
   style={
-    Object {
+    {
       "display": "inline-flex",
     }
   }
@@ -87,7 +87,7 @@ exports[`render() should render component with errorTextPosition "right" correct
       onFocus={[Function]}
       placeholder=""
       style={
-        Object {
+        {
           "borderLeft": "none",
           "borderRadius": 0,
           "borderRight": "none",
@@ -106,7 +106,7 @@ exports[`render() should render component with errorTextPosition "right" correct
 exports[`render() should render disabled component correctly 1`] = `
 <div
   style={
-    Object {
+    {
       "display": "inline-flex",
       "flexDirection": "column",
     }
@@ -121,7 +121,7 @@ exports[`render() should render disabled component correctly 1`] = `
       onFocus={[Function]}
       placeholder=""
       style={
-        Object {
+        {
           "borderLeft": "none",
           "borderRadius": 0,
           "borderRight": "none",
@@ -140,7 +140,7 @@ exports[`render() should render disabled component correctly 1`] = `
 exports[`render() should render focused component correctly 1`] = `
 <div
   style={
-    Object {
+    {
       "display": "inline-flex",
       "flexDirection": "column",
     }
@@ -155,7 +155,7 @@ exports[`render() should render focused component correctly 1`] = `
       onFocus={[Function]}
       placeholder=""
       style={
-        Object {
+        {
           "borderLeft": "none",
           "borderRadius": 0,
           "borderRight": "none",
@@ -174,7 +174,7 @@ exports[`render() should render focused component correctly 1`] = `
 exports[`render() should render icon correctly depending on iconPosition and iconColor 1`] = `
 <div
   style={
-    Object {
+    {
       "display": "inline-flex",
       "flexDirection": "column",
     }
@@ -189,7 +189,7 @@ exports[`render() should render icon correctly depending on iconPosition and ico
       onFocus={[Function]}
       placeholder=""
       style={
-        Object {
+        {
           "borderLeft": "none",
           "borderRadius": 0,
           "borderRight": "none",
@@ -205,7 +205,7 @@ exports[`render() should render icon correctly depending on iconPosition and ico
       as="i"
       color="blue"
       name="search"
-      style={Object {}}
+      style={{}}
     />
   </div>
 </div>
@@ -214,7 +214,7 @@ exports[`render() should render icon correctly depending on iconPosition and ico
 exports[`render() should render validationErrorIcon correctly on right side 1`] = `
 <div
   style={
-    Object {
+    {
       "display": "inline-flex",
       "flexDirection": "column",
     }
@@ -229,7 +229,7 @@ exports[`render() should render validationErrorIcon correctly on right side 1`] 
       onFocus={[Function]}
       placeholder=""
       style={
-        Object {
+        {
           "borderLeft": "none",
           "borderRadius": 0,
           "borderRight": "none",
@@ -246,7 +246,7 @@ exports[`render() should render validationErrorIcon correctly on right side 1`] 
       color="green"
       name=""
       style={
-        Object {
+        {
           "opacity": 1,
         }
       }
@@ -258,7 +258,7 @@ exports[`render() should render validationErrorIcon correctly on right side 1`] 
 exports[`render() should render validationSuccessIcon correctly on right side 1`] = `
 <div
   style={
-    Object {
+    {
       "display": "inline-flex",
       "flexDirection": "column",
     }
@@ -273,7 +273,7 @@ exports[`render() should render validationSuccessIcon correctly on right side 1`
       onFocus={[Function]}
       placeholder=""
       style={
-        Object {
+        {
           "borderLeft": "none",
           "borderRadius": 0,
           "borderRight": "none",
@@ -290,7 +290,7 @@ exports[`render() should render validationSuccessIcon correctly on right side 1`
       color="green"
       name=""
       style={
-        Object {
+        {
           "opacity": 1,
         }
       }

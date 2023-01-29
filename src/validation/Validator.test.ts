@@ -74,7 +74,7 @@ describe('validateValue()', () => {
     ['https://test.com', 'url'],
     ['test@test.com', 'emailAddress'],
     ['5252 4158 2380 3345', 'creditCardNumber'],
-    ['01 / 22', 'creditCardExpiration'],
+    ['01 / 99', 'creditCardExpiration'],
     ['223', 'creditCardVerificationCode'],
     ['22.55', 'number'],
     ['22', 'integer'],
